@@ -39,3 +39,5 @@ router.get('/', function(req, res) {
 app.use('/', router);
 
 server.listen(3000);
+
+console.log("listening on 3000 : ");
