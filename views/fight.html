@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script
+            src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+        
+        <style type="text/css">
+            .clsPanelDiv > table{
+                border-collapse: collapse;
+            }
+            .clsPanelDiv > table > tbody > tr > th,td {
+                border: solid 1px;
+                width : 50px;
+                height : 50px;
+                text-align: center;
+            }
+            #divMyPlane > table > tbody > tr > th,
+            #divMyPlane > table > tbody > tr > td {
+                color:red;
+            }
+            #divEnemyPlane > table > tbody > tr > th,
+            #divEnemyPlane > table > tbody > tr > td {
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="fight" method="post">
+            <div>MY ID:<label id="userid">{{id}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label id="myStatus" style="color:red"></label></div>
+            <div>Enemy ID:<label id="enemyUserid">{{ememy_id}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label id="enemyStatus" style="color:red"></label></div>
+            <div><input type="hidden" id="status" value="0" /></div>
+            <div>fight status : <label id="fightStatus">preparing...</label></div>
+            <div style="width: 100%;height:700px;">
+
+                <div id="" class="" style="height:70px">
+                    <input type="button" id="btn1st" style="margin-top:10px;height:40px;width:100px;" value="1st plane" />
+                    <input type="button" id="btn2nd" style="margin-top:10px;height:40px;width:100px;" value="2nd plane" />
+                    <input type="button" id="btn3rd" style="margin-top:10px;height:40px;width:100px;" value="3rd plane" />
+                    <input type="button" id="btnOnReady" style="margin-top:10px;height:40px;width:100px;margin-left:60px;" value="finish" />
+                    <input type="button" id="btnReset" style="margin-top:10px;height:40px;width:100px;margin-left:20px;" value="reset" />
+                </div>
+
+                <div id="divMyPlane" class="clsPanelDiv" style="float:left;">
+                    <table>
+                        <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>J</th></tr>
+                        <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </table>
+                </div>
+
+                <div id="divPm1" class="clsPanelDiv" style="float:left;margin-top:53px;margin-left:50px;">
+                    <table id="tblPm1" style="float:left;">
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    </table>
+                    <table id="tblPm2" style="margin-left:316px;">
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td><td></td></tr>
+                    </table>
+                    <table id="tblPm3" style="float:left;margin-top:50px;margin-left:50px;">
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                    </table>
+                    <table id="tblPm4" style="margin-top:50px;margin-left:316px;">
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                        <tr><td></td><td></td><td></td><td></td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="divEnemyPlane" class="clsPanelDiv">
+                <table>
+                    <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>J</th></tr>
+                    <tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>9</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </table>
+            </div>
+            <input type="text" name="mode" value="{{mode}}" />
+        </form>
+        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript">
+            var socket = io();
+            var bkColor = "white";
+            var bkColor1 = "#E4FF8D";
+            var bkColor2 = "#CCCC99";
+            var bkColor3 = "#FF6666";
+            var planeMode = "";
+            var planeIndex = 0;
+            var planeColor = 0;
+            var settingFlg = false;
+            var panel = new Array();
+            // サーバ側からchatイベントを待ち受ける
+            socket.on('updFightPanel', function (infoBack) {
+                var fireRow = infoBack.fireRow;
+                var fireCol = infoBack.fireCol;
+                var fromId = infoBack.fromId;
+                var result = infoBack.result;
+                var retmark = "×";
+                var updTarDivId = "divMyPlane";
+                var status = $("#userid").text();
+                if (fromId == $("#userid").text()) {
+                    updTarDivId = "divEnemyPlane";
+                    status = $("#enemyUserid").text();
+                }
+                // $("#" + updTarDivId).find("tr:eq(" + fireRow + ")").find("td:eq(" + fireCol + ")").css("background-color", "orange");
+                if (result != "") {
+                    retmark = "○";
+                    if (result % 10 == 0) {
+                        retmark = "△";
+                    }
+                }
+
+                $("#" + updTarDivId).find("tr:eq(" + fireRow + ")").find("td:eq(" + fireCol + ")").text(retmark);
+                $("#fightStatus").text("open fire!!! Now Firing by " + status);
+                $("#status").val(status);
+            });
+
+            socket.on('updUserList', function (userlist, readylist) {
+                var userid = $("#userid").text();
+                for (var i = 0; i < userlist.length; i++) {
+                    if (userid != userlist[i]) {
+                        $("#enemyUserid").text(userlist[i]);
+                        break;
+                    }
+                }
+
+                for (i = 0; i < readylist.length; i++) {
+                    if (userid == readylist[i]) {
+                        $("#myStatus").text("Ready!!!");
+                    } else {
+                        $("#enemyStatus").text("Ready!!!");
+                    }
+                }
+
+                if (readylist.length == 2) {
+                    $("#status").val(userlist[0]);
+                    $("#fightStatus").text("open fire!!! Now Firing by " + userlist[0]);
+                }
+            });
+            
+            $(document).ready(function() {
+                // open fire
+                $("#divEnemyPlane").find("td").click(function() {
+                    var status = $("#status").val();
+                    var myId = $("#userid").text();
+                    var enemyId = $("#enemyUserid").text();
+                    if (status == "0") {
+                        alert("Now is prepring ... ");
+                        return;
+                    }
+
+                    if (status != myId) {
+                        alert("Is not your turn now ... ");
+                        return;
+                    }
+
+                    var fireCol = $(this).parents("tr").find("td").index($(this));
+                    // var col = $("tr:eq(0)").find("th:eq(" + colIdx + ")").text();
+                    var fireRow = $(this).parents("tr").find("td:eq(0)").text();
+                    var fireInfo = {
+                        fireRow : fireRow,
+                        fireCol : fireCol,
+                        fromId : myId,
+                        toId : enemyId
+                    };
+
+                    // イベントを発火しデータを受け渡す
+                    socket.emit('openFire', fireInfo);
+                });
+                
+                $("#btn1st").click(function() {
+                    savePanel();
+                    planeIndex = 1;
+                    planeColor = bkColor1;
+                    planeMode = "";
+                    setPlaneFactory();
+                });
+                
+                $("#btn2nd").click(function() {
+                    savePanel();
+                    planeIndex = 2;
+                    planeColor = bkColor2;
+                    planeMode = "";
+                    setPlaneFactory();
+                });
+                
+                $("#btn3rd").click(function() {
+                    savePanel();
+                    planeIndex = 3;
+                    planeColor = bkColor3;
+                    planeMode = "";
+                    setPlaneFactory();
+                });
+
+                $("#btnReset").click(function() {
+                    $("#divMyPlane table tr td").each(function(rowIdx, element) {
+                        $(this).removeAttr("pm");
+                        $(this).css("background-color", bkColor);
+                        savePanel();
+                    });
+                });
+
+                $("#btnOnReady").click(function() {
+                    socket.emit('onReady', panel);
+                });
+
+                $("#divPm1 td").click(function() {
+                    if ($(this).attr("pm") != undefined) {
+                        planeMode = $(this).attr("pm");
+                    }
+                });
+
+                $("#divMyPlane td").mouseover(function() {
+                    if (planeMode == "") {
+                        return;
+                    }
+                    
+                    var rowIdx = $(this).parents("tr").find("td:eq(0)").text();
+                    var colIdx = $(this).parents("tr").find("td").index($(this));
+
+                    preputPlane(rowIdx, colIdx);
+                }).click(function() {
+                    if (planeMode == "") {
+                        return;
+                    }
+
+                    var rowIdx = $(this).parents("tr").find("td:eq(0)").text();
+                    var colIdx = $(this).parents("tr").find("td").index($(this));
+
+                    putPlane(rowIdx, colIdx);
+                });
+
+                // pageReady();
+
+                // イベントを発火しデータを受け渡す
+                socket.emit('addUser', $("#userid").text());
+            });
+
+            function setPlaneFactory() {
+                $('#divPm1').find('table:eq(0)').find('tr:eq(0)').find('td:eq(2)').attr("pm", "10").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(0)').find('tr:eq(1)').find('td').attr("pm", "1").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(0)').find('tr:eq(2)').find('td:eq(2)').attr("pm", "1").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(0)').find('tr:eq(3)').find('td:gt(0):lt(3)').attr("pm", "1").css('background-color', planeColor);
+                
+                $('#divPm1').find('table:eq(1) tr:eq(3) td:eq(2)').attr("pm", "20").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(1) tr:eq(2) td').attr("pm", "2").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(1) tr:eq(1) td:eq(2)').attr("pm", "2").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(1) tr:eq(0) td:gt(0):lt(3)').attr("pm", "2").css('background-color', planeColor);
+                
+                // $('#divPm1').find('table:eq(2)').find('tr:eq(0)').find('td:eq(2),td:eq(4)').css('background-color', plColor);
+                
+                $('#divPm1').find('table:eq(2) td:nth-child(1):eq(2)').attr("pm", "30").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(2) td:nth-child(2)').attr("pm", "3").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(2) td:nth-child(3):eq(2)').attr("pm", "3").css('background-color', planeColor);
+                $('#divPm1').find('table:eq(2) td:nth-child(4):gt(0):lt(3)').attr("pm", "3").css('background-color', planeColor);
+                
+                $('#divPm1 table:eq(3) td:nth-child(4):eq(2)').attr("pm", "40").css('background-color', planeColor);
+                $('#divPm1 table:eq(3) td:nth-child(3)').attr("pm", "4").css('background-color', planeColor);
+                $('#divPm1 table:eq(3) td:nth-child(2):eq(2)').attr("pm", "4").css('background-color', planeColor);
+                $('#divPm1 table:eq(3) td:nth-child(1):gt(0):lt(3)').attr("pm", "4").css('background-color', planeColor);
+            }
+
+            function savePanel() {
+                panel = new Array();
+                $("#divMyPlane table tr").each(function(rowIdx, element) {
+                    panel[rowIdx] = new Array();
+                    $($(this).find("td,th")).each(function(colIdx, element) {
+                        panel[rowIdx][colIdx] = $(this).attr("pi") == undefined ? "" : $(this).attr("pi");
+                    });
+                });
+            }
+
+            // 効率低いので、一時的に使う
+            function loadPanel() {
+                var targetPanel = $("#divMyPlane table");
+                for (var rowIdx = 1; rowIdx <= 10; rowIdx++) {
+                    for (var colIdx = 1; colIdx <= 10; colIdx++) {
+                        $(targetPanel).find("tr:eq(" + rowIdx + ") td:eq(" + colIdx + ")").css("background-color", eval("bkColor" + panel[rowIdx][colIdx]));
+                    }
+                }
+            }
+
+            function preputPlane(referRow, referCol) {
+                var targetPanel = $("#divMyPlane table");
+                var copyPanel = $("#tblPm" + planeMode);
+                var startRow = eval(referRow) - 2 - 1;
+                var startCol = eval(referCol) - 2 - 1;
+
+                startRow = startRow > 0 ? startRow : 0;
+                startCol = startCol > 0 ? startCol : 0;
+
+                loadPanel();
+
+                $(targetPanel).find("tr:gt(" + startRow + "):lt(5)").each(function(i, rowEle) {
+                    $(this).find("td:gt(" + startCol + "):lt(5)").each(function(j, colEle){
+                        var pm = $(copyPanel).find("tr:eq(" + i + ") td:eq(" + j + ")").attr("pm");
+                        if (pm) {
+                            var copyColor = $(copyPanel).find("tr:eq(" + i + ") td:eq(" + j + ")").css("background-color");
+                            $(this).css("background-color", copyColor);
+                        }
+
+                    });
+                });
+            }
+
+            function putPlane(referRow, referCol) {
+                var targetPanel = $("#divMyPlane table");
+                var copyPanel = $("#tblPm" + planeMode);
+                var startRow = eval(referRow) - 2 - 1;
+                var startCol = eval(referCol) - 2 - 1;
+
+                startRow = startRow > 0 ? startRow : 0;
+                startCol = startCol > 0 ? startCol : 0;
+
+                $(targetPanel).find("tr:gt(" + startRow + "):lt(5)").each(function(i, rowEle) {
+                    $(this).find("td:gt(" + startCol + "):lt(5)").each(function(j, colEle){
+                        var pm = $(copyPanel).find("tr:eq(" + i + ") td:eq(" + j + ")").attr("pm");
+                        if (pm && pm % 10 == 0) {
+                            $(this).attr("pi", planeIndex * 10);
+                        } else {
+                            $(this).attr("pi", planeIndex);
+                        }
+                    });
+                });
+                
+                savePanel();
+                planeMode = "";
+            }
+
+        </script>
+    </body>
+</html>
